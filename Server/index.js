@@ -6,7 +6,7 @@ const dbconnection = require("./db");
 
 const app = express();
 // app is the instance of express used to define routes and middleware
-
+app.use(express.json())
 const PORTNUMBER = 7000;
 //portnumber on which server listens to
 
@@ -29,7 +29,8 @@ app.get('/apitest',(req, res)=>{
 })
 
 //convert string  to path
-app.use(express.json())
+//app.use(express.json())
 //endpoint
 app.use('/user',require("./Routes/user_Routes"))
 // app.use('/user',userroutes)
+app.use('/products',require("./Routes/product_Routes"))
