@@ -13,7 +13,7 @@ const addproduct=async(req,res)=>{
             productdescription
         })
         await productdetails.save();
-        res.status(201).json({message:"Product added uccessfully",pdata:productdetails})
+        res.status(201).json({message:"Product added successfully",pdata:productdetails})
     } catch (error) {
         console.log(error)
         res.status(500).json({message:"Server Error",error})
