@@ -1,5 +1,6 @@
 const express = require("express");
 const dbconnection = require("./db");
+const cors=require("cors")
 // const userroutes=require("./Routes/user_Routes")
 // Express is the web framework, which handles request and response
 
@@ -10,6 +11,11 @@ app.use(express.json())
 const PORTNUMBER = 7000;
 //portnumber on which server listens to
 
+//for accepting any port number(for security purpose)
+app.use(cors())
+// app.use(cors({
+//     origin:"localhost:3000"
+// }))
 
 //app.listen is the method that statrs the server and listens to the incoming requests ono that specified port number
 //The callback function is executed when the server is successfully started
