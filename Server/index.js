@@ -40,3 +40,4 @@ app.get('/apitest',(req, res)=>{
 app.use('/user',require("./Routes/user_Routes"))
 // app.use('/user',userroutes)
 app.use('/products',require("./Routes/product_Routes"))
+app.use('/Category',require("./Routes/Category_Routes"))
