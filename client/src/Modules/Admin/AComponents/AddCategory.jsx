@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function AddCategory() {
 
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
   const handleSave = () => {
@@ -24,6 +25,12 @@ export default function AddCategory() {
             label="Category Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            fullWidth
+          />
+           <TextField
+            label="Category Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             fullWidth
           />
 

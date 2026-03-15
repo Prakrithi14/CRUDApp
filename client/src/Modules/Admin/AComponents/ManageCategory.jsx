@@ -22,10 +22,10 @@ export default function ManageCategory() {
   const navigate = useNavigate();
 
   const [categories, setCategories] = useState([
-    { id: 1, name: "Saree" },
-    { id: 2, name: "Jeans" },
-    { id: 3, name: "Office Wear" },
-    { id: 4, name: "Kurtis" },
+    // { id: 1, name: "Saree" },
+    // { id: 2, name: "Jeans" },
+    // { id: 3, name: "Office Wear" },
+    // { id: 4, name: "Kurtis" },
   ]);
 
   const handleDelete = (id) => {
@@ -70,7 +70,8 @@ export default function ManageCategory() {
               {categories.map((cat, index) => (
                 <TableRow key={cat.id}>
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell>{cat.name}</TableCell>
+                  <TableCell>{cat.categoryname}</TableCell>
+                  <TableCell>{cat.categoryname}</TableCell>
                   <TableCell align="center">
                     <IconButton color="primary">
                       <EditIcon />
