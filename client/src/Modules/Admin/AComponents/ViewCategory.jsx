@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
@@ -7,16 +7,25 @@ export default function ViewCategory() {
   const [category,setCategory]=useState([])
 
   useEffect(()=>{
-    axios.get("http://localhost:7000/category/viewcategory")
+    axios.get("http://localhost:7000/Category/getcategory")
     .then((res)=>{
-      console.log(res)
+      console.log(res.data.allcategory)
       setCategory(res.data.allcategory)
     })
     .catch((error)=>{
       console.log(error)
     })
   },[])
-
+  const HandleDelete=(cid)=>{
+    axios.delete(`http://localhost:7000/Category/deletecategory/${cid}`)
+    .then((res)=>{
+      console.log(res)
+      alert("Category deleted successfully")
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
   return (
     <div>
 
@@ -27,6 +36,7 @@ export default function ViewCategory() {
             <TableRow>
               <TableCell>Category Name</TableCell>
               <TableCell>Category Description</TableCell>
+              <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
 
@@ -36,6 +46,10 @@ export default function ViewCategory() {
               <TableRow key={index}>
                 <TableCell>{cat.categoryname}</TableCell>
                 <TableCell>{cat.categorydescription}</TableCell>
+                <TableCell>
+                  <Button variant='outlined'>Update</Button>
+                  <Button variant='contained' onClick={()=>HandleDelete(cat._id)}>Delete</Button>
+                </TableCell>
               </TableRow>
             ))}
 

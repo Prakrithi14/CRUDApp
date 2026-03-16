@@ -20,7 +20,7 @@ export default function ViewProduct() {
         .catch((error)=>{
             console.log(error)
         })
-    })
+    },[])
   return (
     <div>
       <TableContainer>
