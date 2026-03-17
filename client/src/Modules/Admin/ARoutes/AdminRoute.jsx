@@ -9,6 +9,7 @@ import AddCategory from '../AComponents/AddCategory'
 import ViewUser from '../AComponents/ViewUser'
 import ViewProduct from '../AComponents/ViewProduct'
 import ViewCategory from '../AComponents/ViewCategory'
+import UpdateCategory from '../AComponents/UpdateCategory'
 export default function AdminRoute() {
   return (
     <div>
@@ -22,6 +23,7 @@ export default function AdminRoute() {
         <Route path='/ViewUser' element={<ViewUser/>}/>
         <Route path='/Viewproduct' element={<ViewProduct/>}/>
         <Route path='/ViewCategory' element={<ViewCategory/>}/>
+        <Route path='/UpdateCategory/:catid' element={<UpdateCategory/>}/>
       </Routes>
     </div>
   )

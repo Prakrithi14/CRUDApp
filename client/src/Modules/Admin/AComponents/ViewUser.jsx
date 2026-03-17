@@ -46,7 +46,7 @@ export default function ViewUser() {
             <TableCell align="right">EMAIL</TableCell>
             <TableCell align="right">PHONE</TableCell>
             <TableCell align="right">ADDRESS</TableCell>
-            <TableCell align="right">ACTION</TableCell>
+            <TableCell align="center">ACTION</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -62,9 +62,9 @@ export default function ViewUser() {
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.phone}</TableCell>
               <TableCell align="right">{row.address}</TableCell>
-              <TableCell>
-                <Button variant='outlined' >Update</Button>
-                <Button variant='contained' onClick={()=>HandleDelete(row._id)}>Delete</Button>
+              <TableCell  align='center'>
+                <Button variant='outlined' sx={{ mr: 2 }} >Update</Button>
+                <Button variant='contained' color='error' onClick={()=>HandleDelete(row._id)}>Delete</Button>
               </TableCell>
             </TableRow>
           ))}
