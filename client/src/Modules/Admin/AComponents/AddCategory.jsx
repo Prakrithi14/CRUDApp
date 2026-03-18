@@ -73,7 +73,7 @@ export default function AddCategory() {
     console.log({...categorydata,[e.target.name]:e.target.value})
     setCategorydata({...categorydata,[e.target.name]:e.target.value})
   }
-  const handleRegister=()=>{
+  const handleadd=()=>{
     //   const existingusers=JSON.parse(localStorage.getItem('userdetails'))||[];
     //   console.log(existingusers)
     //   const allusers=[...existingusers,formData]
@@ -96,7 +96,7 @@ export default function AddCategory() {
       <Typography variant='h4' style={{fontFamily:"math",fontWeight:"bold", marginLeft:"100px"}}>Add Category</Typography>
       <TextField variant='outlined' label=' Category Name' name='categoryname'type='Text'  onChange={handleChange} fullWidth style={{marginBottom:"10px"}}/>
        <TextField variant='outlined' label='category description' name='categorydescription' multiline rows={4} fullWidth style={{marginBottom:"10px"}} onChange={handleChange}/>
-       <Button variant='contained' fullWidth onClick={handleRegister}>Add</Button>
+       <Button variant='contained' fullWidth onClick={handleadd}>Add</Button>
       </Paper>
     </div>
   )

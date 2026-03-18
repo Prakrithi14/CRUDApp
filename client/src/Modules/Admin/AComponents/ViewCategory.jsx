@@ -32,12 +32,11 @@ export default function ViewCategory() {
 
       <TableContainer>
         <Table>
-
           <TableHead>
             <TableRow>
-              <TableCell align='center'>Category Name</TableCell>
-              <TableCell align='center'>Category Description</TableCell>
-              <TableCell align='center'>Action</TableCell>
+              <TableCell align='center' sx={{fontWeight:'bold'}}>Category Name</TableCell>
+              <TableCell align='center' sx={{fontWeight:'bold'}}>Category Description</TableCell>
+              <TableCell align='center' sx={{fontWeight:'bold'}}>Action</TableCell>
             </TableRow>
           </TableHead>
 
@@ -48,7 +47,7 @@ export default function ViewCategory() {
                 <TableCell align='center'>{cat.categoryname}</TableCell>
                 <TableCell align='center'>{cat.categorydescription}</TableCell>
                 <TableCell align='center'>
-                  <Button variant='contained' sx={{ mr: 2 }} component={Link} to={`Admin/UpdateCategory/${cat._id}`}>Update</Button>
+                  <Button variant='contained' sx={{ mr: 2 }} component={Link} to={`/Admin/UpdateCategory/${cat._id}`}>Update</Button>
                   <Button variant='contained' color='error' onClick={()=>HandleDelete(cat._id)}>Delete</Button>
                 </TableCell>
               </TableRow>

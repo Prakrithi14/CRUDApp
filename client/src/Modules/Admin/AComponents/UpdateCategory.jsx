@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 export default function UpdateCategory() {
   const [formData,setFormData]=useState({
     name:'',
@@ -37,24 +37,6 @@ export default function UpdateCategory() {
 
     })
   },[])
-//   const handleRegister=()=>{
-//     //   const existingusers=JSON.parse(localStorage.getItem('userdetails'))||[];
-//     //   console.log(existingusers)
-//     //   const allusers=[...existingusers,formData]
-//     //   localStorage.setItem('userdetails',JSON.stringify(allusers))
-//     //   alert("Registered Successful")
-//     console.log("Category data :",categorydata)
-//     axios.post('http://localhost:7000/Category/addcategory',categorydata)
-//     .then((res)=>{
-//         console.log("Categories:",res.data)
-//         alert("Added Successfully")
-//       //  alert(res.data.message)
-//     })
-//     .catch((error)=>{
-//         console.log(error)
-//     })
-//   }
-
 const handleUpdate=async()=>{
     const categorydatas=new FormData();
     categorydatas.append('categoryname',categorydatas.categoryname);

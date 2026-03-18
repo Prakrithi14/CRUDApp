@@ -5,12 +5,13 @@ const producttable=require("../Models/Product_model")
 const addproduct=async(req,res)=>{
 
     try {
-        const{productname,productprice,productquantity,productdescription}=req.body;
+        const{productname,productprice,productquantity,productdescription,categoryId}=req.body;
         const productdetails=new producttable({
             productname,
             productprice,
             productquantity,
-            productdescription
+            productdescription,
+            categoryId
         })
         await productdetails.save();
         res.status(201).json({message:"Product added successfully",pdata:productdetails})
