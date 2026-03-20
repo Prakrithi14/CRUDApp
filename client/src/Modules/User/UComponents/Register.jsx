@@ -10,7 +10,8 @@ export default function Register() {
     email:'',
     password:'',
     phone:'',
-    address:''
+    address:'',
+    // gender:''
 
   })
 
@@ -44,6 +45,8 @@ export default function Register() {
       <TextField variant='outlined' label='Password' fullWidth name='password' type='password' style={{marginBottom:"10px"}} onChange={handleChange}/>
       <TextField variant='outlined' label='Phone ' fullWidth name='phone'type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/>
        <TextField variant='outlined' label='Address ' name='address'multiline rows={4} fullWidth style={{marginBottom:"10px"}} onChange={handleChange}/>
+       
+
        <Button variant='contained' fullWidth onClick={handleRegister}>Register</Button>
       </Paper>
     </div>

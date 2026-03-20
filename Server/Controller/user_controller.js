@@ -8,7 +8,8 @@ const usertable=require("../Models/User_model")
             email,
             password,
             phone,
-            address
+            address,
+           
         }) 
         await userdetails.save();
         
