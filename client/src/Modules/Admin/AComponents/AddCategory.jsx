@@ -84,7 +84,7 @@ export default function AddCategory() {
     .then((res)=>{
         console.log("Categories:",res.data)
         alert("Added Successfully")
-      //  alert(res.data.message)
+       console.log(res.data.message)
     })
     .catch((error)=>{
         console.log(error)
