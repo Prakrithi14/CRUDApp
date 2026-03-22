@@ -83,7 +83,7 @@ export default function AddCategory() {
     axios.post('http://localhost:7000/Category/addcategory',categorydata)
     .then((res)=>{
         console.log("Categories:",res.data)
-        alert("Added Successfully")
+        alert("Category added Successfully")
        console.log(res.data.message)
     })
     .catch((error)=>{
