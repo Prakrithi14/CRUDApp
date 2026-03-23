@@ -31,6 +31,7 @@ export default function ViewProduct() {
             <TableCell>Price</TableCell>
             <TableCell>Quantity</TableCell>
             <TableCell>Product Description</TableCell>
+            <TableCell>Category Id</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -40,6 +41,7 @@ export default function ViewProduct() {
               <TableCell>{product.productprice}</TableCell>
               <TableCell>{product.productquantity}</TableCell>
               <TableCell>{product.productdescription}</TableCell>
+              <TableCell>{product.CategryId}</TableCell>
             </TableRow>
           ))}
         </TableBody>

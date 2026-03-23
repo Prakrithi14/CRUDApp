@@ -9,6 +9,7 @@ const productschema=new mongoose.Schema({
     productdescription:{type:String,required:true},
     categoryId:{type:mongoose.Schema.Types.ObjectId,
                 ref:"Category"
-    }
+    },
+    productimage:{type:String}
 })
 module.exports=mongoose.model("Product",productschema)

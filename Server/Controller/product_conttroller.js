@@ -6,12 +6,14 @@ const addproduct=async(req,res)=>{
 
     try {
         const{productname,productprice,productquantity,productdescription,categoryId}=req.body;
+        const pimage=req.file? req.file.filename:null
         const productdetails=new producttable({
             productname,
             productprice,
             productquantity,
             productdescription,
-            categoryId
+            categoryId,
+            productimage:pimage
         })
         await productdetails.save();
         res.status(201).json({message:"Product added successfully",pdata:productdetails})

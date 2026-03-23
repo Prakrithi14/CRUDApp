@@ -20,3 +20,6 @@ cors:
 
 nodemon:
 this command is used to run the server .Here server runs whenever there is changes in the file
+
+Multer:npm install multer
+it is a middleware for handling file or image uploads

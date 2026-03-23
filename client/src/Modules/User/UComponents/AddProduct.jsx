@@ -14,7 +14,8 @@ export default function AddProduct() {
             productprice:'',
             productquantity:'',
             productdescription:'',
-            categoryId:''
+            categoryId:'',
+            productimage:''
 
   })
 const [category,setCategory]=useState([])
@@ -31,8 +32,13 @@ useEffect(()=>{
 
   const handleChange=(e)=>{
     console.log({...product,[e.target.name]:e.target.value})
-    setProduct({...product,[e.target.name]:e.target.value})
+    //setProduct({...product,[e.target.name]:e.target.value})
+    if(e.target.name==='productimage'){
+      setProduct({...product,productimage:e.target.files[0]})
+  }else{
+     setProduct({...product,[e.target.name]:e.target.value})
   }
+}
   const handleRegister=()=>{
     //   const existingusers=JSON.parse(localStorage.getItem('userdetails'))||[];
     //   console.log(existingusers)
@@ -40,7 +46,8 @@ useEffect(()=>{
     //   localStorage.setItem('userdetails',JSON.stringify(allusers))
     //   alert("Registered Successful")
     console.log("Product data:",product)
-    axios.post('http://localhost:7000/products/addproduct',product)
+    axios.post('http://localhost:7000/products/addproduct',product,
+      {headers:{'Content-Type':'multipart/form-data'}})
     .then((res)=>{
         console.log("Product added successfully",res.data)
         //alert("Registered Successful")
@@ -57,6 +64,7 @@ useEffect(()=>{
       <TextField variant='outlined' label=' Product Name' name='productname'type='Text'  onChange={handleChange} fullWidth style={{marginBottom:"10px"}}/>
       <TextField variant='outlined' label='Product Price' fullWidth  name='productprice' type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/>
       <TextField variant='outlined' label='Quantity' fullWidth name='productquantity' type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/>
+      <TextField variant='outlined' label='productimage' fullWidth name='productimage' type='file' value={product.productimage} style={{marginBottom:"10px"}} onChange={handleChange}/>
       {/* <TextField variant='outlined' label='Quantity' fullWidth name='productdescription' type='Text' style={{marginBottom:"10px"}} onChange={handleChange}/> */}
     <TextField variant='outlined' label='Description' name='productdescription' multiline rows={4} fullWidth style={{marginBottom:"10px"}} onChange={handleChange}/>
        
