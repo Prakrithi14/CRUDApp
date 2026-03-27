@@ -27,7 +27,7 @@ export default function UpdateCategory() {
     setCategorydata({...categorydata,[e.target.name]:e.target.value})
   }
   useEffect(()=>{
-    axios.get(`http://localhost:7000/Category/getcategorybyid/${catid}`)
+    axios.get(`http://localhost:7000/product/getcategorybyid/${catid}`)
     .then((res)=>{
         console.log(res.data.cdata)
         setCategorydata(res.data.cdata)

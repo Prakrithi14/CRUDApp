@@ -64,7 +64,7 @@ useEffect(()=>{
       <TextField variant='outlined' label=' Product Name' name='productname'type='Text'  onChange={handleChange} fullWidth style={{marginBottom:"10px"}}/>
       <TextField variant='outlined' label='Product Price' fullWidth  name='productprice' type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/>
       <TextField variant='outlined' label='Quantity' fullWidth name='productquantity' type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/>
-      <TextField variant='outlined' label='productimage' fullWidth name='productimage' type='file' value={product.productimage} style={{marginBottom:"10px"}} onChange={handleChange}/>
+      <TextField variant='outlined' label='productimage' fullWidth name='productimage' type='file' InputLabelProps={{shrink:true}} style={{marginBottom:"10px"}} onChange={handleChange}/>
       {/* <TextField variant='outlined' label='Quantity' fullWidth name='productdescription' type='Text' style={{marginBottom:"10px"}} onChange={handleChange}/> */}
     <TextField variant='outlined' label='Description' name='productdescription' multiline rows={4} fullWidth style={{marginBottom:"10px"}} onChange={handleChange}/>
        

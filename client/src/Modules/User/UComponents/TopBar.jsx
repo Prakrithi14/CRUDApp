@@ -179,26 +179,10 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const pages = [
   { name: "About Us", path: "/about" },
   { name: "Shop Now", path: "/shop" },
-  { name: "FAQ", path: "/faq" }
+  { name: "FAQ", path: "/faq" },
+  { name: "Products", path: "/Products" }
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-// const pages = [
-//     {name:"Register",path:'/'},
-//     {name:"Arrow",path:'/Arrowfunction'},
-//     {name:"Table",path:'/BasicTable'},
-//     {name:"Card",path:'/Newcard'},
-//    // {name:"Destructuring",path:'/Destructuring'},
-//     //{name:"ImportModule",path:'/ImportModule'},
-//     //{name:"TernaryOperator",path:'/TernaryOperator'},
-//     {name:'Hooks',path:'/Hookusestate'},
-//     {name:"Counter",path:'/Task1'},
-//     {name:"UseEffect",path:'/HookuseEffect'},
-//     {name:"APIaxios",path:'/ApiAxios'},
-//     {name:"APIaxiosProducts",path:'/Task3'},
-    
-// ];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 function TopBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);

@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, Container, Grid, Button, Fade } from "@mui/material";
+import Products from "./Products";
 
 export default function About() {
   const [checked, setChecked] = React.useState(false);
@@ -9,6 +10,7 @@ export default function About() {
   }, []);
 
   return (
+    
     <Box>
 
       {/* INTRO SECTION */}
