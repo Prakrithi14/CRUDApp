@@ -9,7 +9,7 @@ import Products from '../UComponents/Products'
 
 function AppContent(){
   const location=useLocation()
-  const hidetopbar=["/"]
+  const hidetopbar=["/Register"]
   return(
     <div>
     {!hidetopbar.includes(location.pathname) && <TopBar/>}

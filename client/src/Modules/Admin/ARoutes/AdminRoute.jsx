@@ -25,7 +25,7 @@ export default function AdminRoute() {
         <Route path='/Viewproduct' element={<ViewProduct/>}/>
         <Route path='/ViewCategory' element={<ViewCategory/>}/>
         <Route path='/UpdateCategory/:catid' element={<UpdateCategory/>}/>
-        <Route path='/UpdateProduct/:catid' element={<UpdateProduct/>}/>
+        <Route path='/UpdateProduct/:pid' element={<UpdateProduct/>}/>
       </Routes>
     </div>
   )
