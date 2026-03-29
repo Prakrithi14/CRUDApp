@@ -11,6 +11,7 @@ import ViewProduct from '../AComponents/ViewProduct'
 import ViewCategory from '../AComponents/ViewCategory'
 import UpdateCategory from '../AComponents/UpdateCategory'
 import UpdateProduct from '../AComponents/UpdateProduct'
+import AddProduct from '../../User/UComponents/AddProduct'
 export default function AdminRoute() {
   return (
     <div>
@@ -26,6 +27,7 @@ export default function AdminRoute() {
         <Route path='/ViewCategory' element={<ViewCategory/>}/>
         <Route path='/UpdateCategory/:catid' element={<UpdateCategory/>}/>
         <Route path='/UpdateProduct/:pid' element={<UpdateProduct/>}/>
+        <Route path='/AddProduct' element={<AddProduct/>}/>
       </Routes>
     </div>
   )

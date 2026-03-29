@@ -6,6 +6,7 @@ import UAbout from '../UComponents/UAbout'
 import Register from '../UComponents/Register'
 import AddProduct from '../UComponents/AddProduct'
 import Products from '../UComponents/Products'
+import ProductDetails from '../UComponents/ProductDetails'
 
 function AppContent(){
   const location=useLocation()
@@ -18,6 +19,8 @@ function AppContent(){
         <Route path='/About' element={<UAbout/>}/>
         <Route path='/Register' element={<Register/>}/>
         <Route path='/Products' element={<Products/>}/>
+        <Route path='/Product/:id' element={<ProductDetails/>}/>
+
         <Route path='/' element={<AddProduct/>}/>
       </Routes>
     </div>

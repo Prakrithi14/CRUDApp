@@ -9,15 +9,18 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
+import InfoIcon from '@mui/icons-material/Info';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -95,7 +98,7 @@ const filteredproducts=selectedcategory==="All"?products:products.filter((pro)=>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+           {pdata.productname.charAt(0).toUpperCase()}
           </Avatar>
         }
         action={
@@ -104,7 +107,7 @@ const filteredproducts=selectedcategory==="All"?products:products.filter((pro)=>
           </IconButton>
         }
         title={pdata.productname}
-        subheader="September 14, 2016"
+        // subheader="September 14, 2016"
       />
       <CardMedia
         component="img"
@@ -113,16 +116,19 @@ const filteredproducts=selectedcategory==="All"?products:products.filter((pro)=>
         alt={pdata.productname}
       />
       <CardContent>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}>
         {pdata.productdescription}
-        </Typography>
+        </Typography> */}
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton style={{color:'red'}} aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton style={{color:'blue'}} aria-label="share">
           <ShareIcon />
+        </IconButton>
+        <IconButton style={{color:'green'}} component={Link} to={`/product/${pdata._id}`}>
+          <InfoIcon  />
         </IconButton>
         <ExpandMore
           expand={expanded}
@@ -135,7 +141,10 @@ const filteredproducts=selectedcategory==="All"?products:products.filter((pro)=>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography sx={{ marginBottom: 2 }}>Method:</Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        {pdata.productdescription}
+        </Typography>
+          {/* <Typography sx={{ marginBottom: 2 }}>Method:</Typography>
           <Typography sx={{ marginBottom: 2 }}>
             Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
             aside for 10 minutes.
@@ -148,18 +157,18 @@ const filteredproducts=selectedcategory==="All"?products:products.filter((pro)=>
             pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook,
             stirring often until thickened and fragrant, about 10 minutes. Add
             saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
-          <Typography sx={{ marginBottom: 2 }}>
+          </Typography> */}
+          {/* <Typography sx={{ marginBottom: 2 }}>
             Add rice and stir very gently to distribute. Top with artichokes and
             peppers, and cook without stirring, until most of the liquid is absorbed,
             15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
             mussels, tucking them down into the rice, and cook again without
             stirring, until mussels have opened and rice is just tender, 5 to 7
             minutes more. (Discard any mussels that don&apos;t open.)
-          </Typography>
-          <Typography>
+          </Typography> */}
+          {/* <Typography>
             Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
+          </Typography> */}
         </CardContent>
       </Collapse>
     </Card>
