@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-export default function Register() {
+export default function Login() {
   const [formData,setFormData]=useState({
     name:'',
     email:'',
@@ -14,7 +14,7 @@ export default function Register() {
     // gender:''
 
   })
-
+  
   const handleChange=(e)=>{
     console.log({...formData,[e.target.name]:e.target.value})
     setFormData({...formData,[e.target.name]:e.target.value})
@@ -26,7 +26,7 @@ export default function Register() {
     //   localStorage.setItem('userdetails',JSON.stringify(allusers))
     //   alert("Registered Successful")
     console.log("Form data:",formData)
-    axios.post('http://localhost:7000/user/registeruser',formData)
+    axios.get('http://localhost:7000/user/registeruser',formData)
     .then((res)=>{
         console.log("Registered User:",res.data)
         //alert("Registered Successful")
@@ -37,17 +37,18 @@ export default function Register() {
     })
   }
   return (
-    <div > 
-      <Paper elevation={20} style={{width:"500px",padding:"20px",marginTop:"150px",marginBottom:"50px",marginLeft:"500px"}}> 
-      <Typography variant='h4' style={{fontFamily:"math",fontWeight:"bold", marginLeft:"100px"}}>REGISTER PAGE</Typography>
-      <TextField variant='outlined' label=' Name' name='name'type='Text'  onChange={handleChange} fullWidth style={{marginBottom:"10px"}}/>
+    <div> 
+      <Paper elevation={20} style={{width:"500px",padding:"20px",marginTop:"200px",marginBottom:"50px",marginLeft:"500px"}}> 
+      <Typography variant='h4' style={{fontFamily:"math",fontWeight:"bold", marginLeft:"100px"}}>Sign In</Typography>
+      {/* <TextField variant='outlined' label=' Name' name='name'type='Text'  onChange={handleChange} fullWidth style={{marginBottom:"10px"}}/> */}
       <TextField variant='outlined' label='Email' fullWidth  name='email' type='Email' style={{marginBottom:"10px"}} onChange={handleChange}/>
       <TextField variant='outlined' label='Password' fullWidth name='password' type='password' style={{marginBottom:"10px"}} onChange={handleChange}/>
-      <TextField variant='outlined' label='Phone ' fullWidth name='phone'type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/>
-       <TextField variant='outlined' label='Address ' name='address'multiline rows={4} fullWidth style={{marginBottom:"10px"}} onChange={handleChange}/>
+      {/* <TextField variant='outlined' label='Phone ' fullWidth name='phone'type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/> */}
+       {/* <TextField variant='outlined' label='Address ' name='address'multiline rows={4} fullWidth style={{marginBottom:"10px"}} onChange={handleChange}/> */}
 
-       <Button variant='contained' fullWidth onClick={handleRegister}>Register</Button>
-       <a style={{marginLeft:"150px",marginBottom:"10px"}} href='/Login'>Already Registered?Login</a>
+
+    <Button variant='contained' fullWidth onClick={handleRegister}>Register</Button>
+     <a style={{marginLeft:"200px",marginBottom:"10px"}}  href='/Register'>New User?Register</a>
       </Paper>
     </div>
   )
