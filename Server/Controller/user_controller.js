@@ -5,6 +5,10 @@ const SECRET_KEY="product-crud"
   const registeruser=async(req,res)=>{
     try {
         const{name,email,password,phone,address}=req.body;
+        const useremail=await usertable.findOne({email})
+        if(useremail){
+            res.json({message:"Email already exists"})
+        }
         const userdetails=new usertable({
             name,
             email,
@@ -93,4 +97,15 @@ const login=async(req,res)=>{
         res.status(500).json({message:"Server error",error})
     }
 }
-module.exports={registeruser,getuser,getuserbyid,deleteuser,updateuser,login}
+const getprofile=async(req,res)=>{
+    try {
+        const user=await usertable.findById(req.userid)
+        res.json({success:true,udata:user})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:'Server error',error})
+        
+    }
+
+}
+module.exports={registeruser,getuser,getuserbyid,deleteuser,updateuser,login,getprofile}
