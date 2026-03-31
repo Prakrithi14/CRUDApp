@@ -1,4 +1,6 @@
 const usertable=require("../Models/User_model")
+const jwt=require('jsonwebtoken')
+const SECRET_KEY="product-crud"
 
   const registeruser=async(req,res)=>{
     try {
@@ -67,5 +69,28 @@ const updateuser=async(req,res)=>{
         
     }
 }
-
-module.exports={registeruser,getuser,getuserbyid,deleteuser,updateuser}
+const login=async(req,res)=>{
+    try {
+        const {email,password}=req.body
+        const userlogin=await usertable.findOne({
+            email,password
+        })
+        if(!userlogin){
+            res.json({
+                success:false,
+                message:"user not found"
+            })
+        }
+        else{
+            const token=await jwt.sign(userlogin.id,SECRET_KEY)
+            res.json({
+                success:true,
+                message:"Login Successful!!",token}
+            )
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:"Server error",error})
+    }
+}
+module.exports={registeruser,getuser,getuserbyid,deleteuser,updateuser,login}

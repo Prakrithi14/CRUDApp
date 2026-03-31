@@ -1,0 +1,13 @@
+//import mongoose
+const mongoose=require('mongoose')
+//create new schema
+const adminschema=new mongoose.Schema({
+    
+    email:{type:String,required:true},
+    password:{type:String,required:true},
+
+    
+})
+module.exports=mongoose.model("Admin",adminschema)
+
+//User->table name(collection name)

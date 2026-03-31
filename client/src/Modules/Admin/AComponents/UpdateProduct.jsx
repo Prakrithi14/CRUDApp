@@ -60,7 +60,7 @@ useEffect(()=>{
     productdatas.append('productquantity',productdatas.productquantity);
     productdatas.append('productdescription',productdatas.productdescription);
  productdatas.append('categoryId',productdatas.categoryId)    
-    productdatas.append('productimage',productdatas.productimage) 
+    // productdatas.append('productimage',productdatas.productimage) 
     try {
         await axios.put(`http://localhost:7000/products/updateproduct/${pid}`,product);
         alert("Product updated successfully");

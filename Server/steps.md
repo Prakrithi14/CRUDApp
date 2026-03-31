@@ -23,3 +23,8 @@ this command is used to run the server .Here server runs whenever there is chang
 
 Multer:npm install multer
 it is a middleware for handling file or image uploads
+
+jwt:
+json web token
+npm i jsonwebtoken
+Itis used for secured authentication and authorization
