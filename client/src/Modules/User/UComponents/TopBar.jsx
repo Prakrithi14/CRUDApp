@@ -182,7 +182,7 @@ const pages = [
   { name: "FAQ", path: "/faq" },
   { name: "Products", path: "/Products" }
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile',  'Logout'];
 function TopBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -207,7 +207,18 @@ function TopBar() {
     setAnchorElUser(null);
   };
   const HandleNavigate=(path)=>navigate(path)
-  
+   const handleSettings=(set)=>{
+    if(set==='Logout'){
+      alert("Are you sure  you want to logout")
+      localStorage.removeItem('UserToken')
+      navigate('/Login')
+    }
+    else if(set==='Profile'){
+      navigate('/MyProfile')
+    }
+   }
+
+   
   return (
     <AppBar position="static" sx={{backgroundColor:'black'}}> 
       <Container maxWidth="xl">
@@ -319,7 +330,7 @@ function TopBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={()=>handleSettings(setting)}>
                   <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
                 </MenuItem>
               ))}

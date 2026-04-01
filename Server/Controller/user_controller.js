@@ -73,6 +73,15 @@ const updateuser=async(req,res)=>{
         
     }
 }
+const updateprofile=async(req,res)=>{
+    try {
+        const updatedprofile=await usertable.findByIdAndUpdate(req.userid,req.body,{new:true})
+        res.json({message:"Profile updated",success:true,udetails:updatedprofile})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:'server error',error})
+    }
+}
 const login=async(req,res)=>{
     try {
         const {email,password}=req.body
@@ -108,4 +117,4 @@ const getprofile=async(req,res)=>{
     }
 
 }
-module.exports={registeruser,getuser,getuserbyid,deleteuser,updateuser,login,getprofile}
+module.exports={registeruser,getuser,getuserbyid,deleteuser,updateuser,login,getprofile,updateprofile}

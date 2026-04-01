@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 export default function MyProfile() {
   const [formData,setFormData]=useState({
     name:'',
@@ -22,6 +23,8 @@ console.log("usertoken details:",token)
 useEffect(()=>{
   viewprofile()
 },[])
+
+const {uid}=useParams()
   const viewprofile=async(req,res)=>{
         try {
             const response=await fetch("http://localhost:7000/user/getprofile",{method:"GET",headers:{"auth-token":token}})
@@ -34,6 +37,44 @@ useEffect(()=>{
             console.log(error)
         }
     }
+// const handleUpdate=async()=>{
+   
+//     try {
+//         const response = await axios.put(
+//             "http://localhost:7000/user/updateuser/" + formData._id,
+//             formData,
+//             {
+//                 headers: {
+//                     "auth-token": token
+//                 }
+//             }
+//         )
+//         console.log("Updated data:", response.data)
+//         alert("Profile updated successfully")
+
+//     } catch (error) {
+//         console.log(error)
+//         alert("Update failed")
+//     }
+// }
+const handleProfile=async(req,res)=>{
+  try {
+     const response=await fetch("http://localhost:7000/user/updateprofile",{method:"PUT",body:JSON.stringify(formData),headers:{"auth-token":token,"Content-Type":"application/json"}})
+     const details=await response.json()
+     alert("Profile updated successfully")
+    setFormData(details.udetails)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({message:'Server error'})
+  }
+}
+    // try {
+    //   axios.put('http://localhost:7000/user/updateuser/${uid}',userdata,{headers:{"auth-token":token}})
+    //   alert("Profile updated successfully");
+    // } catch (error) {
+    //   console.log(error)
+      
+    // }
 
   return (
     <div > 
@@ -44,7 +85,7 @@ useEffect(()=>{
       <TextField variant='outlined' label='Phone ' fullWidth value={formData.phone} name='phone'type='Number' style={{marginBottom:"10px"}} onChange={handleChange}/>
        <TextField variant='outlined' label='Address ' name='address'multiline rows={4}  value={formData.address}fullWidth style={{marginBottom:"10px"}} onChange={handleChange}/>
 
-       <Button variant='contained' fullWidth sx={{backgroundColor:'black'}}>Update</Button>
+       <Button variant='contained' onClick={handleProfile}fullWidth sx={{backgroundColor:'black'}}>Update</Button>
        <a style={{marginLeft:"150px",marginBottom:"10px"}} href='/Login'>Already Registered?Login</a>
       </Paper>
     </div>
