@@ -174,7 +174,6 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import { useNavigate } from 'react-router-dom';
 
 const pages = [
   { name: "About Us", path: "/about" },
