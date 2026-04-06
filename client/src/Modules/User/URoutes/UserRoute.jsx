@@ -12,7 +12,7 @@ import MyProfile from '../UComponents/MyProfile'
 
 function AppContent(){
   const location=useLocation()
-  const hidetopbar=["/","/Login"]
+  const hidetopbar=["/"]
   return(
     <div>
     {!hidetopbar.includes(location.pathname) && <TopBar/>}

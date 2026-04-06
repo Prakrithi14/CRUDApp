@@ -78,7 +78,7 @@ const handleProfile=async(req,res)=>{
 
   return (
     <div > 
-      <Paper elevation={20} style={{width:"500px",padding:"15px",marginTop:"140px",marginBottom:"50px",marginLeft:"500px"}}> 
+      <Paper elevation={20} style={{width:"500px",borderRadius:"35px",padding:"15px",marginTop:"140px",marginBottom:"50px",marginLeft:"500px"}}> 
       <Typography variant='h4' style={{fontFamily:"math",fontWeight:"bold", marginLeft:"150px"}}>My Profile</Typography>
       <TextField variant='outlined' label=' Name' value={formData.name} name='name'type='Text'  onChange={handleChange} fullWidth style={{marginBottom:"10px"}}/>
       <TextField variant='outlined' label='Email' fullWidth value={formData.email}  name='email' type='Email' style={{marginBottom:"10px"}} onChange={handleChange}/>
