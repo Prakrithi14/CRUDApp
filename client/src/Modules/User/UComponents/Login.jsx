@@ -16,7 +16,7 @@ export default function Login() {
     setLogin({...login,[e.target.name]:e.target.value})
   }
   const handleLogin=()=>{
-    console.log("Login details:",login)
+    console.log("Login Details:",login)
         axios.post('http://localhost:7000/user/Login',login)
         .then((res)=>{
             console.log(res)

@@ -181,7 +181,7 @@ const pages = [
   { name: "FAQ", path: "/faq" },
   { name: "Products", path: "/Products" }
 ];
-// const settings = ['Profile',  'Logout'];
+
 const token=localStorage.getItem('UserToken')
 console.log(token)
 const settings=token?['Profile','Logout']:['Login']
