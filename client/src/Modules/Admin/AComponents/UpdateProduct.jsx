@@ -53,21 +53,46 @@ useEffect(()=>{
     console.log(error)
   })
 },[])
+//   const handleUpdate=async()=>{
+//     const productdatas=new FormData();
+//     productdatas.append('productname',product.productname);
+//     productdatas.append('productprice',product.productprice);
+//     productdatas.append('productquantity',product.productquantity);
+//     productdatas.append('productdescription',product.productdescription);
+//  productdatas.append('categoryId',product.categoryId)    
+//     // productdatas.append('productimage',productdatas.productimage) 
+//     try {
+//         await axios.put(`http://localhost:7000/products/updateproduct/${pid}`,product);
+//         alert("Product updated successfully");
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
+
   const handleUpdate=async()=>{
     const productdatas=new FormData();
-    productdatas.append('productname',productdatas.productname);
-    productdatas.append('productprice',productdatas.productprice);
-    productdatas.append('productquantity',productdatas.productquantity);
-    productdatas.append('productdescription',productdatas.productdescription);
- productdatas.append('categoryId',productdatas.categoryId)    
-    // productdatas.append('productimage',productdatas.productimage) 
+    productdatas.append('productname',product.productname);
+    productdatas.append('productprice',product.productprice);
+    productdatas.append('productquantity',product.productquantity);
+    productdatas.append('productdescription',product.productdescription);
+  productdatas.append('categoryId',product.categoryId)
+    
+    if(product.productimage){
+      productdatas.append('productimage',product.productimage)
+    }
+
     try {
-        await axios.put(`http://localhost:7000/products/updateproduct/${pid}`,product);
+        await axios.put(`http://localhost:7000/products/updateproduct/${pid}`,productdatas,{
+          headers:{
+            'Content-Type':'multipart/form-data'
+          }
+        }); 
         alert("Product updated successfully");
     } catch (error) {
         console.log(error)
     }
-}
+  } 
   return (
     <div style={{backgroundColor:"aliceblue"}}> 
       <Paper elevation={20} style={{width:"500px",padding:"20px",marginTop:"50px",marginBottom:"50px",marginLeft:"370px"}}> 

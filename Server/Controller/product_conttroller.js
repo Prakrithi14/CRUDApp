@@ -59,16 +59,46 @@ const getproducts=async(req,res)=>{
  }
 
  const updateproduct=async(req,res)=>{
-    try {
-        const {id}=req.params
-        const body=req.body
-        const updatedproduct=await producttable.findByIdAndUpdate(id,body,{new:true})
-        console.log(updatedproduct)
-        res.status(201).json({message:"Product updated",updatedata:updatedproduct})
+    // try {
+    //     const {id}=req.params
+    //     const body=req.body
+    //     const updatedproduct=await producttable.findByIdAndUpdate(id,body,{new:true})
+    //     console.log(updatedproduct)
+    //     res.status(201).json({message:"Product updated",updatedata:updatedproduct})
+        
+    // } catch (error) {
+    //    console.log(error) 
+    //    res.status(500).json({message:"server error",error})
+    // }
+    
+
+
+     try {
+        const{productname,productprice,productquantity,productdescription,categoryId}=req.body;
+        const pimage=req.file? req.file.filename:null
+        const productdetails={
+            productname,
+            productprice,
+            productquantity,
+            productdescription,
+            categoryId,
+            productimage:pimage
+        }
+        const updatedProduct = await producttable.findByIdAndUpdate(
+      req.params.id,
+      productdetails,
+      { new: true }
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Product updated successfully",
+      data: updatedProduct
+    });
         
     } catch (error) {
-       console.log(error) 
-       res.status(500).json({message:"server error",error})
+        console.log(error)
+        res.status(500).json({message:"Server Error",error})
     }
  }
 module.exports={addproduct,getproducts,getproductbyid,deleteproduct,updateproduct}
