@@ -1,0 +1,39 @@
+const mongoose=require('mongoose');
+const bookingSchema= new mongoose.Schema({
+    fullname:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    phone:{
+        type:Number,
+        required:true
+    },
+    address:{
+        type:String,
+        required:true
+    },
+    userId:{type:mongoose.Schema.Types.ObjectId,ref:"User",required:true},
+    ProductId:{type:mongoose.Schema.Types.ObjectId,ref:"Product",required:true},
+    bookingdate:{
+        type:Date,
+        default:Date.now
+    },
+    quantity:{
+        type:Number,
+       default:1
+    },
+    totalamount:{
+        type:Number,
+        required:true
+    },
+    bookingstatus:{
+        type:String,
+        enum:["Pending","Approved","Rejected","Completed"],
+        default:"Pending"
+    }
+})
+module.exports=mongoose.model("Booking",bookingSchema)

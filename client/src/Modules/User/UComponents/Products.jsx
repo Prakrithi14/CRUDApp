@@ -19,8 +19,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -51,6 +51,7 @@ export default function Products() {
    const[products,setProducts]=useState([]);
    const [category,setCategories]=useState([]);
    const [selectedcategory,setSelectedcategory]=useState("All")
+   const navigate=useNavigate();
       useEffect(()=>{
           axios.get('http://localhost:7000/products/getproducts')
           .then((res)=>{
@@ -121,24 +122,25 @@ const filteredproducts=selectedcategory==="All"?products:products.filter((pro)=>
         </Typography> */}
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton style={{color:'red'}} aria-label="add to favorites">
+        {/* <IconButton style={{color:'red'}} aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
         <IconButton style={{color:'blue'}} aria-label="share">
           <ShareIcon />
-        </IconButton>
+        </IconButton> */}
         <IconButton style={{color:'green'}} component={Link} to={`/product/${pdata._id}`}>
           <InfoIcon  />
         </IconButton>
-        <ExpandMore
+        {/* <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >
           <ExpandMoreIcon />
-        </ExpandMore>
+        </ExpandMore> */}
       </CardActions>
+      <Button variant='contained' fullWidth color='success' onClick={()=>navigate(`/BookingForm/${pdata._id}`)}>Book now</Button>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
