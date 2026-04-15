@@ -95,7 +95,7 @@ const login=async(req,res)=>{
             })
         }
         else{
-            const token=await jwt.sign(userlogin.id,SECRET_KEY)
+            const token=await jwt.sign({id:userlogin._id},SECRET_KEY)
             res.json({
                 success:true,
                 message:"Login Successful!!",token}

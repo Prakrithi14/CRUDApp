@@ -28,7 +28,7 @@ const bookingSchema= new mongoose.Schema({
     },
     totalamount:{
         type:Number,
-        required:true
+        required:false
     },
     bookingstatus:{
         type:String,
