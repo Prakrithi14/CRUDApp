@@ -13,6 +13,7 @@ import UpdateCategory from '../AComponents/UpdateCategory'
 import UpdateProduct from '../AComponents/UpdateProduct'
 import AddProduct from '../../User/UComponents/AddProduct'
 import AdminLogin from '../AComponents/AdminLogin'
+import ViewBooking from '../AComponents/ViewBooking'
 import BookingForm from '../../User/UComponents/BookingForm'
 export default function AdminRoute() {
   return (
@@ -31,6 +32,7 @@ export default function AdminRoute() {
         <Route path='/UpdateProduct/:pid' element={<UpdateProduct/>}/>
         <Route path='/AddProduct' element={<AddProduct/>}/>
         <Route path='/AdminLogin' element={<AdminLogin/>}/>
+        <Route path='/ViewBooking' element={<ViewBooking/>}/>
       
       </Routes>
     </div>

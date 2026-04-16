@@ -1,10 +1,10 @@
 const bookingTable=require('../Models/Booking_model')
 const createBooking=async(req,res)=>{
     try {
-        const {fullname,email,phone,address,quantity,productId}=req.body
+        const {fullname,email,phone,address,quantity,productId,totalamount}=req.body
         const uid=req.userid
         const newBooking=new bookingTable({
-            fullname,email,phone,address,quantity,ProductId:productId,userId:uid
+            fullname,email,phone,address,quantity,ProductId:productId,userId:uid,totalamount
         })
         const saveBooking=await newBooking.save()
         res.status(200).json({message:'Booking created successfully',bdata:saveBooking})
