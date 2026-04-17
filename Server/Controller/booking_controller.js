@@ -13,4 +13,14 @@ const createBooking=async(req,res)=>{
             res.status(500).json({message:'Server error'})
     }
 }
-module.exports={createBooking}
+const getBookings=async(req,res)=>{
+    try {
+        const getallbookings=await bookingTable.find()
+        console.log(getallbookings)
+        res.status(200).json({message:'Bookings retrieved successfully',bdata:getallbookings})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:'Server error',error})
+    }
+}
+module.exports={createBooking,getBookings}
