@@ -7,7 +7,7 @@ const createBooking=async(req,res)=>{
             fullname,email,phone,address,quantity,ProductId:productId,userId:uid,totalamount
         })
         const saveBooking=await newBooking.save()
-        res.status(200).json({message:'Booking created successfully',bdata:saveBooking})
+        res.status(200).json({message:'Booking created successfully!',bdata:saveBooking})
     } catch (error) {
             console.log(error)
             res.status(500).json({message:'Server error'})
