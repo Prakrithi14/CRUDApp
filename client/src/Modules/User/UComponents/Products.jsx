@@ -78,7 +78,7 @@ useEffect(() => {
         console.log(error)
       })
 
-  }, [])
+  }, []) 
 const filteredproducts=selectedcategory==="All"?products:products.filter((pro)=>pro.categoryId===selectedcategory)
   return (
     <div style={{display:'flex',flexWrap:'wrap',gap:'20px'}}>
