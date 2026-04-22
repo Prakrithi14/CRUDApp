@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function BookingForm() {
@@ -14,7 +14,7 @@ export default function BookingForm() {
         quantity:'',
         totalamount:'',
     })
-
+    const navigate=useNavigate()
     const [price,setPrice]=useState(0)
     const handleChange=(e)=>{
         if(e.target.name==='quantity'){
@@ -43,6 +43,7 @@ export default function BookingForm() {
         await axios.post("http://localhost:7000/booking/createBooking",{...booking,productId},{headers:{"auth-token":utoken}}
             )
         alert('Booking created successfully')
+        navigate('/TrackStatus')
       } catch (error) {
         console.log(error)
         alert("Booking failed")

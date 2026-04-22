@@ -10,6 +10,7 @@ import ProductDetails from '../UComponents/ProductDetails'
 import Login from '../UComponents/Login'
 import MyProfile from '../UComponents/MyProfile'
 import BookingForm from '../UComponents/BookingForm'
+import TrackStatus from '../UComponents/TrackStatus'
 
 function AppContent(){
   const location=useLocation()
@@ -24,6 +25,7 @@ function AppContent(){
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Products' element={<Products/>}/>
         <Route path='/MyProfile' element={<MyProfile/>}/>
+        <Route path='/TrackStatus' element={<TrackStatus/>}/>
         <Route path='/Product/:id' element={<ProductDetails/>}/>
           <Route path='/BookingForm/:productId' element={<BookingForm/>}/>
 

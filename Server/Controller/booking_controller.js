@@ -37,8 +37,8 @@ const getallbookings=async(req,res)=>{
 }
 const updateStatus=async(req,res)=>{
     try {
-        const {status}=req.body
-        const updatedbooking=await bookingTable.findByIdAndUpdate(req.params.id,{bstatus:status},{new:true})
+        const {newstatus}=req.body
+        const updatedbooking=await bookingTable.findByIdAndUpdate(req.params.id,{bookingstatus:newstatus},{new:true})
         if(!updatedbooking){
             res.status(404).json({message:"booking not found"})
         }
@@ -49,5 +49,17 @@ const updateStatus=async(req,res)=>{
         res.status(500).json({message:'Server error',error})
     }
 }
+const getuserBooking=async(req,res)=>{
+    try {
+        const uid=req.userid
+        const bookings=await bookingTable.find({userId:uid})
+        .populate("userId","name address phone")
+        .populate("ProductId","productname productprice productquantity")
+        res.status(200).json({message:'Bookings found successfully',bdata:bookings})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:'Server error',error})
+    }
+}
 
-module.exports={createBooking,getBookings,getallbookings,updateStatus}
+module.exports={createBooking,getBookings,getallbookings,updateStatus,getuserBooking}

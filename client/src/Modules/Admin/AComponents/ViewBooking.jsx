@@ -8,29 +8,17 @@ import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Menu, MenuItem } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Menu, MenuItem, Select } from '@mui/material'
 export default function ViewBooking() {
 
   const [bookings, setBookings] = useState([])
+const [SelectedBooking, setSelectedBooking] = useState(null)
+const [status,setStatus]=useState("")
+const [open,setOpen]=useState(false)
 
 
-  const [anchorEl, setAnchorEl] = useState(null)
-const [selectedId, setSelectedId] = useState(null)
-
-const handleClick = (event, id) => {
-  setAnchorEl(event.currentTarget)
-  setSelectedId(id)
-}
-
-const handleClose = () => {
-  setAnchorEl(null)
-  setSelectedId(null)
-}
-
-
-
-  useEffect(()=>{
-    axios.get("http://localhost:7000/booking/getallbookings")
+const fetchbooking=()=>{
+  axios.get("http://localhost:7000/booking/getallbookings")
     .then((res)=>{
       console.log(res.data.bdata)
       setBookings(res.data.bdata)
@@ -38,25 +26,28 @@ const handleClose = () => {
     .catch((error)=>{
       console.log(error)
     })
+}
+  useEffect(()=>{
+    fetchbooking()
   }, [])
 
-  const handleStatusChange = async (status, id) => {
+  const handleChangeStatus=(bookings,status)=>{
+    setSelectedBooking(bookings)
+    setStatus(status)
+    setOpen(true)
+  }
+const handleConfirm=async()=>{
   try {
-    await axios.put(`http://localhost:7000/booking/updateStatus/${id}`, {
-      bookingstatus: status
-    })
-
-    // update UI instantly
-    setBookings((prev) =>
-      prev.map((b) =>
-        b._id === id ? { ...b, bookingstatus: status } : b
-      )
-    )
-
+    await axios.put(`http://localhost:7000/booking/updateStatus/${SelectedBooking._id}`,{newstatus:status})
+  fetchbooking()
+    setStatus(status)
+    
+    setOpen(false)
   } catch (error) {
     console.log(error)
   }
 }
+ 
   return (
     <Box sx={{
       minHeight: "100vh",
@@ -75,17 +66,18 @@ const handleClose = () => {
         <Table>
           <TableHead sx={{ background: "#4f46e5" }}>
             <TableRow>
-              <TableCell sx={{ color: "white" }}>User ID</TableCell>
+              <TableCell sx={{ color: "white" }}>Sl Number</TableCell>
               <TableCell sx={{ color: "white" }}>Name</TableCell>
-              <TableCell sx={{ color: "white" }}> Email</TableCell>
-              <TableCell sx={{ color: "white" }}>Phone Number</TableCell>
+              {/* <TableCell sx={{ color: "white" }}> Email</TableCell> */}
+              <TableCell sx={{ color: "white" }}>Address</TableCell>
               <TableCell sx={{ color: "white" }}>Product ID</TableCell>
-              <TableCell sx={{ color: "white" }}>Quantity</TableCell>
-              <TableCell sx={{ color: "white" }}>Total Price</TableCell>
+              {/* <TableCell sx={{ color: "white" }}>Quantity</TableCell> */}
+              {/* <TableCell sx={{ color: "white" }}>Total Price</TableCell> */}
+              <TableCell sx={{ color: "white" }}>Booking Status</TableCell>
               <TableCell sx={{ color: "white" }}>Action</TableCell>
             </TableRow>
           </TableHead>
-           <TableBody>
+           {/* <TableBody>
           {bookings.map((row,index) => (
             <TableRow
               key={row._id}
@@ -120,9 +112,36 @@ const handleClose = () => {
 </TableCell>
             </TableRow>
           ))}
+        </TableBody> */}
+        <TableBody>
+          {bookings.map((b,index) => (
+            <TableRow>
+              <TableCell>{index+1}</TableCell>
+              <TableCell>{b.fullname}</TableCell>              
+              <TableCell>{b.address}</TableCell>              
+              <TableCell>{b.ProductId?.productname}</TableCell>              
+              <TableCell>{b.bookingstatus}</TableCell>              
+              <TableCell>
+                <Select value={b.bookingstatus} onChange={(e)=>handleChangeStatus(b,e.target.value)}>
+                  <MenuItem value="Pending">Pending</MenuItem>
+                  <MenuItem value="Approved">Approved</MenuItem>
+                  <MenuItem value="Rejected">Rejected</MenuItem>
+                  <MenuItem value="Completed">Completed</MenuItem>
+                </Select>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
         </Table>
         </TableContainer>
+        <Dialog open={open} onClose={()=>setOpen(false)} >
+          <DialogTitle>Confirm Status Update</DialogTitle>
+          <DialogContent>Are You sure want to change the status to {status}?</DialogContent>
+          <DialogActions>
+            <Button variant='contained' color='error' onClick={()=>setOpen(false)} >Cancel</Button>
+            <Button variant='contained' color='success' onClick={handleConfirm}>Confirm</Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </Box>
   )
