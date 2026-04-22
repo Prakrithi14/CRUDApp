@@ -30,7 +30,7 @@ const handleClose = () => {
 
 
   useEffect(()=>{
-    axios.get("http://localhost:7000/booking/getBookings")
+    axios.get("http://localhost:7000/booking/getallbookings")
     .then((res)=>{
       console.log(res.data.bdata)
       setBookings(res.data.bdata)
@@ -96,7 +96,7 @@ const handleClose = () => {
               <TableCell >{row.fullname}</TableCell>
               <TableCell >{row.email}</TableCell>
               <TableCell >{row.phone}</TableCell>
-              <TableCell >{row.ProductId}</TableCell>
+              <TableCell >{row.ProductId?.productname}</TableCell>
               <TableCell >{row.quantity}</TableCell>
               <TableCell >{row.totalamount}</TableCell>
 <TableCell>
